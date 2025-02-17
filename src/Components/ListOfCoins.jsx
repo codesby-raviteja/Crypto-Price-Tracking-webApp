@@ -11,6 +11,7 @@ export default function ListOfCoins({
   searchText,
   listOfCoinsLoadingState,
   listOfCoinsErrorState,
+  error,
 }) {
   const [pageNumber, setPageNumber] = useState(1)
   const [currency, setCurrency] = useContext(CurrencyContext)
@@ -23,9 +24,12 @@ export default function ListOfCoins({
   }
   if (listOfCoinsErrorState) {
     return (
-      <h3 className="text-2xl text-center mt-4 text-red-600/70 font-medium">
-        Error...
-      </h3>
+      <div className="h-[calc(100vh-630px)] flex items-center justify-center">
+        <h3 className="text-2xl text-center mt-4 text-red-600/70 font-medium">
+          {error?.data?.status?.error_message.split(".")[0]}. Please reload
+          After sometime..
+        </h3>
+      </div>
     )
   }
 

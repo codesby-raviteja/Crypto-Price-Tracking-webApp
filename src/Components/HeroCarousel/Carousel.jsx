@@ -5,14 +5,7 @@ import { FaAngleRight } from "react-icons/fa6"
 import { FaAngleLeft } from "react-icons/fa6"
 import { CurrencyContext } from "../../Context/CurrencyContex"
 import { useDispatch, useSelector } from "react-redux"
-// import {
-//   getTrendingCoins,
-//   getTrendingCoinsData,
-//   getTrendingCoinsErrorState,
-//   getTrendingCoinsLoadingState,
-//   updateTrendingCoinsState,
-// } from "../../Store/Slices/TrendingCoinsSlice"
-import { HiH2 } from "react-icons/hi2"
+
 import TrendingCoinShimmer from "../Shimmer/TrendingCoinShimmer"
 import { useGetTrendingCoinsQuery } from "../../Store/rtk"
 
@@ -22,8 +15,10 @@ export default function Carousel() {
     data: trendingCoins,
     isLoading: trendingCoinsLoadingState,
     isError: trendingCoinsErrorState,
+    error,
   } = useGetTrendingCoinsQuery(TrendingCoins_URL(currency))
-  
+
+  // console.log(useGetTrendingCoinsQuery(TrendingCoins_URL(currency)))
   const carouselDiv = useRef()
   const currencyRef = useRef(currency)
   const dispatch = useDispatch()
@@ -40,7 +35,6 @@ export default function Carousel() {
 
     carouselDiv.current.scrollLeft += e.deltaY
   }
-  
 
   return (
     <div className="relative max-w-[90%] mx-auto  mt-8  backdrop-opacity-10 rounded-md  ">
@@ -55,11 +49,17 @@ export default function Carousel() {
             .map((a, i) => <TrendingCoinShimmer key={i} />)
         ) : trendingCoinsErrorState ? (
           <h2 className="text-2xl font-medium  text-red-600/60 mx-auto">
-            {trendingCoinsErrorState}..
+            {error?.data?.status?.error_message.split(".")[0]}. Please reload  After
+            sometime..
           </h2>
         ) : (
           trendingCoins.map((coin) => (
-            <TopTrendingCoin key={coin.id} {...coin} currency={currency} coin={coin}/>
+            <TopTrendingCoin
+              key={coin.id}
+              {...coin}
+              currency={currency}
+              coin={coin}
+            />
           ))
         )}
       </div>

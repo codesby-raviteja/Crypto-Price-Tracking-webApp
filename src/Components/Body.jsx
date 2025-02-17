@@ -14,6 +14,7 @@ export default function Body() {
     data: coinsList,
     isLoading: listOfCoinsLoadingState,
     isError: listOfCoinsErrorState,
+    error,
   } = useGetCoinsListQuery(COINS_LIST_URL(currency))
 
   return (
@@ -23,6 +24,7 @@ export default function Body() {
       {
         <ListOfCoins
           coinsList={coinsList}
+          error={error}
           searchText={searchText}
           listOfCoinsLoadingState={listOfCoinsLoadingState}
           listOfCoinsErrorState={listOfCoinsErrorState}

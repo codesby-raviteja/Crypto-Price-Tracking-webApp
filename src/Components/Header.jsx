@@ -6,11 +6,14 @@ import { Link } from "react-router-dom"
 import { CiHeart } from "react-icons/ci"
 import { FaXmark } from "react-icons/fa6"
 import { CurrencyContext } from "../Context/CurrencyContex"
+import { useSelector } from "react-redux"
+import { getWishListItems } from "../Store/Slices/wishListSlice"
 
 export default function Header() {
   const [openHamburgerMenu, setOpenHamburgerMenu] = useState(false)
-
   const [currency, setCurrency] = useContext(CurrencyContext)
+
+  const wishlistItems = useSelector(getWishListItems).filter((coin) => coin?.id)
 
   return (
     <header className="shadow-md shadow-gray-600 bg-gray-700  text-white sticky top-0 z-20">
@@ -43,9 +46,15 @@ export default function Header() {
             Get Started
           </button>
           <button className=" cursor-pointer">
-            <Link to={"/wishlist"} className="flex flex-col items-center">
+            <Link
+              to={"/wishlist"}
+              className="flex relative flex-col items-center"
+            >
               <CiHeart className="text-3xl" />
               <span className="text-[12px] font-medium">wishlist</span>
+              <span className="absolute right-0 -top-1 bg-white w-4  h-4 flex items-center justify-center text-black rounded-full">
+                {wishlistItems.length}
+              </span>
             </Link>
           </button>
         </nav>
@@ -61,10 +70,13 @@ export default function Header() {
               <option value="inr">IND</option>
               <option value="usd">USD</option>
             </select>
-            <button className="flex flex-col items-center cursor-pointer">
+            <button className="flex relative flex-col items-center cursor-pointer">
               <Link to={"/wishlist"} className="flex flex-col items-center">
                 <CiHeart className="text-2xl" />
                 <span className="text-[12px]  font-medium">wishlist</span>
+                <span className="absolute right-0 -top-2 bg-white w-4  h-4 flex items-center justify-center text-black rounded-full">
+                  {wishlistItems.length}
+                </span>
               </Link>
             </button>
             <button onClick={() => setOpenHamburgerMenu((prev) => !prev)}>

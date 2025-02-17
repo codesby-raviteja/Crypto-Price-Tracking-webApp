@@ -7,6 +7,7 @@ export default function WishList() {
   const data = useSelector(getWishListItems).filter((coin) => coin?.id)
   return (
     <div className="max-w-7xl mx-auto my-4 rounded bg-stone-300/80 p-4 h-[calc(100vh-250px)]">
+      
       <h2 className="text-center text-2xl font-semibold my-8">
         Items in Your WishList
       </h2>
@@ -26,11 +27,6 @@ export default function WishList() {
         ) : (
           data.map((coin) => <WishListItem key={coin.id} {...coin} />)
         )}
-        <div className="cart-header cart-item-container">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
       </div>
     </div>
   )
