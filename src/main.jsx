@@ -8,6 +8,7 @@ import { Provider } from "react-redux"
 import { Store } from "./Store/Store.js"
 import WishList from "./Components/WishList/WishList.jsx"
 
+
 const routes = createBrowserRouter([
   {
     path: "/",

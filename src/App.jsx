@@ -10,7 +10,7 @@ function App() {
       <div className="bg-gray-400">
         <Header />
         <Outlet />
-        <Footer/>
+        <Footer />
       </div>
     </CurrencyContexProvide>
   )
