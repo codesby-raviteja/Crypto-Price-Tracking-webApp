@@ -28,7 +28,7 @@ export const FETCHING_OPTIONS = {
   headers: {
     accept: "application/json",
 
-    // "x-cg-demo-api-key": conf.coinGeckoKey,
+    "x-cg-demo-api-key": "CG-BSxdGsyfkreFveXZEiotYoLU,"
   },
 }
 
