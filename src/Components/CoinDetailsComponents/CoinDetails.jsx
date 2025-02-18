@@ -10,6 +10,9 @@ export default function CoinDetails() {
   useEffect(() => {
     setData(coindetails)
   }, [coindetails])
+
+ 
+
   return (
     <div>
       <StateContextProvider state={[data, setData]}>

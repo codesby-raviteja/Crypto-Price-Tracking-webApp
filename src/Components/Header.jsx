@@ -39,7 +39,7 @@ export default function Header() {
               setCurrency(e.target.value)
             }}
           >
-            <option value="inr ">IND</option>
+            <option value="inr">IND</option>
             <option value="usd">USD</option>
           </select>
           <button className=" bg-linear-to-r from-[#2870EA] to-[#1B4AEF] py-2  text-white px-5 rounded-md cursor-pointer">

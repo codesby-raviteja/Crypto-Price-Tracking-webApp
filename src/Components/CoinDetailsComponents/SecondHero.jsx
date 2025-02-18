@@ -3,7 +3,7 @@ import PerformanceComponent from "../FeatureComponents/PerformanceComponent"
 import NewsInsights from "./NewsInsights"
 import Sentiments from "./Sentiments"
 
-export default function SecondHero() {
+export default function    SecondHero() {
   const [currentTab, setCurrenTab] = useState(0)
   const Tabs = [
     {

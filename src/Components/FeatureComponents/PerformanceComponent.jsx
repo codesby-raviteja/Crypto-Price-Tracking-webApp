@@ -20,19 +20,16 @@ export default function PerformanceComponent() {
 
   useEffect(() => {
     const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&ids=${coin}`
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        "x-cg-demo-api-key": "CG-EyKC6D1HN21HMLVy4RHDHFVR",
-      },
-    }
 
     if (!coinDetails || currencyRef.current !== currency) {
-      fetch(url, options)
+      fetch(url)
         .then((res) => res.json())
         .then((json) => {
+          
+          
+          console.log(json);
           setCoinetails(json[0])
+
         })
         .catch((err) => console.error(err))
     }

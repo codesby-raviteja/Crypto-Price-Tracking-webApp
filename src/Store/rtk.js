@@ -1,5 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { FETCHING_OPTIONS } from "../Components/config"
+import {FETCHING_OPTIONS} from "../Components/config"
+
+
+
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({

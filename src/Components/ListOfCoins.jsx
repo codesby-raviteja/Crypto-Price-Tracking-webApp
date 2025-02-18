@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useRef, useState } from "react"
+import React, { useContext, useState } from "react"
 import CoinRow from "./ListOfCoins/CoinRow"
 import { CurrencyContext } from "../Context/CurrencyContex"
 import TabelHeading from "./ListOfCoins/TabelHeading"
-import { useDispatch } from "react-redux"
 
 import { getSearchedResult } from "./config"
 
@@ -14,10 +13,7 @@ export default function ListOfCoins({
   error,
 }) {
   const [pageNumber, setPageNumber] = useState(1)
-  const [currency, setCurrency] = useContext(CurrencyContext)
   const ListOfCoins = getSearchedResult(searchText, coinsList)
-  const currencyRef = useRef(currency)
-  const dispatch = useDispatch()
 
   if (listOfCoinsLoadingState) {
     return <h3 className="text-2xl text-center mt-4">Loading...</h3>
@@ -48,7 +44,7 @@ export default function ListOfCoins({
         ) : (
           ListOfCoins.filter(
             (coin, idx) => idx >= PageRangeStart && idx < pageRangeEnd
-          ).map((coin) => <CoinRow key={coin.id} {...coin} coinObj={coin} />)
+          ).map((coin) => <CoinRow key={coin?.id} {...coin} coinObj={coin} />)
         )}
       </div>
       <div className="flex gap-4 justify-center px-8 py-4 flex-wrap ">
